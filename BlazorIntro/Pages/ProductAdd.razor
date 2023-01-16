@@ -1,0 +1,40 @@
+﻿@page "/productadd"
+@using BlazorIntro.Models;
+
+
+<h3>Product Add</h3>
+@*mijn model                        mijn methode*@
+<EditForm Model="@productAddModel" OnValidSubmit="@HandleSave">
+    <DataAnnotationsValidator /> @*Activeer dataAnnotation*@
+    @*<ValidationSummary /> @*Toon de fouten aan de gebruiker*@
+    <div class="form-group form-control-sm">
+        <InputText Placeholder="Product Naam" Class="form-control" id="productName" @bind-Value="@productAddModel.ProductName" />
+        <ValidationMessage For="@(()=>productAddModel.ProductName)"></ValidationMessage>
+    </div>
+
+    <div class="form-group form-control-sm">
+        <InputTextArea Placeholder="Product Informatie" Class="form-control" id="description" @bind-Value="@productAddModel.Description" />
+        <ValidationMessage For="@(()=>productAddModel.Description)"></ValidationMessage>
+    </div>
+
+    <div class="form-group form-control-sm">
+        <InputSelect Class="form-control" id="categodyId" @bind-Value="@productAddModel.CategoryId">
+            <option value="1">Dranken</option>
+            <option value="2">Vlees</option>
+        </InputSelect>
+        <ValidationMessage For="@(()=>productAddModel.CategoryId)"></ValidationMessage>
+    </div>
+
+    <div class="form-group form-control-sm">
+        <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+
+</EditForm>
+
+@code {
+    ProductAddModel productAddModel = new ProductAddModel();
+    private void HandleSave()
+    {
+        Console.WriteLine("Product toegevoegd");
+    }
+}

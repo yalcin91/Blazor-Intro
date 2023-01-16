@@ -1,0 +1,29 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<Animate Animation="Animations.SlideUp">
+    <h1>Hello, world!</h1>
+</Animate>
+
+<Animate Animation="Animations.SlideDown">
+Welcome to your new app.
+</Animate>
+
+<button class="btn btn-primary" @onclick="RunAnimation">Animation</button>
+
+<div class="col-md-12">
+    <Animate Animation="Animations.ZoomIn" Duration="TimeSpan.FromSeconds(0.5)" @ref="animate" IsManual="true">
+        <Counter></Counter>
+    </Animate>
+</div>
+
+
+@code {
+    private Animate? animate = new Animate();
+
+    private void RunAnimation()
+    {
+        animate.Run();
+	}
+}

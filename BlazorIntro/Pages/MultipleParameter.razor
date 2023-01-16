@@ -1,0 +1,26 @@
+﻿@page "/multipleparameter"
+
+<h3>MultipleParameter</h3>
+<input id="parameterwithseperatevalues" maxlength="@MaxLength" placeholder="@Placeholder" required="@Required" size="@Size"/>
+<input id="parameterwithdictionary" @attributes="IputAttributes"/> @*Dit is de nieuwe methode!*@
+
+
+@code {
+    [Parameter]
+    public string MaxLength { get; set; } = "10";
+    [Parameter]
+    public string Placeholder { get; set; } = "FirstName";
+    [Parameter]
+    public string Required { get; set; } = "required";
+    [Parameter]
+    public string Size { get; set; } = "50";
+
+    //Nieuwe methode
+    public Dictionary<string, object> IputAttributes { get; set; } = new Dictionary<string, object>
+    {
+        {"maxlength", "10"},
+        {"placeholder", "FirstName"},
+        {"required", "required"},
+        {"size", "50"}
+    };
+}

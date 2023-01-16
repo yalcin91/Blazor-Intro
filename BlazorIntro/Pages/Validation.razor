@@ -1,0 +1,25 @@
+﻿@page "/validation"
+@using BlazorIntro.Models;
+
+
+<h3>Validation</h3>
+
+                 @*mijn model                        mijn methode*@
+<EditForm Model="@productAddModel" OnValidSubmit="@HandleSave">
+    <DataAnnotationsValidator/> @*Activeer dataAnnotation*@
+    <ValidationSummary/> @*Toon de fouten aan de gebruiker*@
+    <h4>Product naam</h4>
+    <InputText id="productName" @bind-Value="@productAddModel.ProductName" />
+    <h4>Product informatie</h4>
+    <InputText id="description" @bind-Value="@productAddModel.Description" />
+    <button type="submit">Save</button>
+</EditForm>
+
+
+@code {
+    ProductAddModel productAddModel = new ProductAddModel();
+    private void HandleSave()
+    {
+        Console.WriteLine("Product toegevoegd");
+    }
+}
